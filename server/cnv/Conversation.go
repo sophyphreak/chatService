@@ -14,7 +14,4 @@ type Conversation struct {
 
 // GetMessageList function
 // 	- checks if Conversation exists with User1 and User2
-//	- returns all messages if does exist
-
-// GetUsers function
-//	- returns the two users for conversation
+//	- returns all messages if exists
