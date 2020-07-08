@@ -13,8 +13,9 @@ type Channel struct {
 
 // CreateChannel function
 //	- create channel with name, empty slice
+//	- check if channel is unique
+//		- if not return error
 //	- add to the Channels slice
-// - if not unique return error
 
 // AddMessage function
 //	- add sent message to Messages slice

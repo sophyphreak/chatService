@@ -1,3 +1,7 @@
 package main
 
-func main() {}
+import "./api"
+
+func main() {
+	api.HandleRequests()
+}
