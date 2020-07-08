@@ -6,6 +6,7 @@ import (
 )
 
 func getChannels(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
 	res := "slice of channel names" // will be replaced
 	json.NewEncoder(w).Encode(res)
 }

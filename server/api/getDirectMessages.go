@@ -8,6 +8,7 @@ import (
 )
 
 func getDirectMessages(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
 	vars := mux.Vars(r)
 	user1 := vars["user1"]
 	user2 := vars["user2"]
