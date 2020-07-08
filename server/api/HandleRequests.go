@@ -4,7 +4,8 @@ import (
 	"github.com/gorilla/mux"
 )
 
-func handleRequests() {
+// HandleRequests handles API requests
+func HandleRequests() {
 	router := mux.NewRouter().StrictSlash(true)
 	router.HandleFunc("/message/channel/{channelName}", getChannelMessages).Methods("GET")
 	router.HandleFunc("/message/direct/{user1}/{user2}", getDirectMessages).Methods("GET")
