@@ -13,7 +13,7 @@ type Channel struct {
 
 // CreateChannel function
 //	- create channel with name, empty slice
-//	- check if channel is unqiue, if not add timestamp
+//	- check if channel is unqiue, if not return error
 //	- add to the Channels slice
 
 // AddMessage function
