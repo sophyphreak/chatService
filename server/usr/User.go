@@ -1,12 +1,9 @@
 package usr
 
-import "../cnv"
+// Usernames is a slice of all Users
+var Usernames []string
 
-// Users is a slice of all Users
-var Users []User
-
-// User is a user
-type User struct {
-	Username      string              `json:"username"`
-	Conversations []*cnv.Conversation `json:"conversations"`
-}
+// AddUser function
+//	- checks if username is unique
+//		- if not unique, adds username w/ timestamp
+//	- return new username
