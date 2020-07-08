@@ -1,12 +1,17 @@
 package api
 
-func handleRequests() {
-	// GET messages (channel or dm ok)
-	// GET channels
-	// GET users
-	// POST new message
-	// POST new channel
-	// POST new user
-}
+import (
+	"github.com/gorilla/mux"
+)
 
-// files to handle of these as well
+func handleRequests() {
+	router := mux.NewRouter().StrictSlash(true)
+	router.HandleFunc("/message/channel", getChannelMessages).Methods("GET")
+	router.HandleFunc("/message/direct", getDirectMessages).Methods("GET")
+	router.HandleFunc("/channel", getChannels).Methods("GET")
+	router.HandleFunc("/username", getUsernames).Methods("GET")
+	router.HandleFunc("/message/channel", addChannelMessage).Methods("POST")
+	router.HandleFunc("/message/direct", addDirectMessage).Methods("POST")
+	router.HandleFunc("/channel", addChannel).Methods("POST")
+	router.HandleFunc("/username", addUser).Methods("POST")
+}
