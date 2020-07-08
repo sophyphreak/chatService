@@ -21,9 +21,12 @@ func TestAddMessage(t *testing.T) {
 	}
 	AddMessage(newMessage)
 
+	fmt.Println()
 	hopeful := len(ch.Messages)
-	fmt.Println(ch.Messages)
 
+	fmt.Println("This is channel after adding message:", ch.Messages)
+
+	fmt.Println(empty)
 	if empty == hopeful {
 		t.Errorf("Chanel Message should have updated")
 	}
