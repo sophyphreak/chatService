@@ -4,6 +4,7 @@ import (
 	"testing"
 )
 
+// Tests to see if adds usernames correctly
 func TestAddUser1(t *testing.T) {
 
 	username := "Jazzyjazz0713"
@@ -16,6 +17,7 @@ func TestAddUser1(t *testing.T) {
 
 }
 
+// Tests to see if it adds timeStamp to username if it already exists
 func TestAddUser2(t *testing.T) {
 
 	username := "Jazzyjazz0713"

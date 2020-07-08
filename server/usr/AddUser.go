@@ -4,7 +4,7 @@ import (
 	"time"
 )
 
-// AddUser sees if a user is unique and then adds to
+// AddUser sees if a user is unique and then updates Usernames array
 func AddUser(user string) string {
 
 	for i := 0; i < len(Usernames); i++ {
