@@ -1,6 +1,9 @@
 package api
 
 import (
+	"log"
+	"net/http"
+
 	"github.com/gorilla/mux"
 )
 
@@ -15,4 +18,5 @@ func HandleRequests() {
 	router.HandleFunc("/message/direct", addDirectMessage).Methods("POST")
 	router.HandleFunc("/channel", addChannel).Methods("POST")
 	router.HandleFunc("/username", addUser).Methods("POST")
+	log.Fatal(http.ListenAndServe(":10000", router))
 }
