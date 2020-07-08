@@ -4,6 +4,8 @@ import (
 	"encoding/json"
 	"io/ioutil"
 	"net/http"
+
+	"../usr"
 )
 
 type username struct {
@@ -18,6 +20,10 @@ func addUser(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	json.Unmarshal(reqBody, &u)
-	username := u // will be replaced
-	json.NewEncoder(w).Encode(username)
+
+	username := usr.AddUser(u.Username)
+
+	res := make(map[string]string)
+	res["username"] = username
+	json.NewEncoder(w).Encode(res)
 }
