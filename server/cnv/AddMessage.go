@@ -2,6 +2,7 @@ package cnv
 
 import "../msg"
 
+// AddMessage addes a new message to a two-person conversation
 func AddMessage(user1, user2 string, newMsg msg.Message) {
 
 	//sorts the two users by username

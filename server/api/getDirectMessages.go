@@ -5,7 +5,16 @@ import (
 	"net/http"
 
 	"github.com/gorilla/mux"
+
+	"../cnv"
+	"../msg"
 )
+
+type directMessageList struct {
+	User1    string        `json:"user1"`
+	User2    string        `json:"user2"`
+	Messages []msg.Message `json:"messages"`
+}
 
 func getDirectMessages(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
@@ -16,11 +25,9 @@ func getDirectMessages(w http.ResponseWriter, r *http.Request) {
 		user1, user2 = user2, user1
 	}
 
-	// add get direct messages function
-
-	res := make(map[string]string)
-	res["user1"] = user1
-	res["user2"] = user2
-	res["messages"] = "slice of messages"
-	json.NewEncoder(w).Encode(res)
+	var m directMessageList
+	m.User1 = user1
+	m.User2 = user2
+	m.Messages = cnv.GetMessageList(user1, user2)
+	json.NewEncoder(w).Encode(m)
 }
