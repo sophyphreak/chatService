@@ -10,11 +10,6 @@ import (
 // Tests to see if adds Message correctly
 func TestAddMessage(t *testing.T) {
 
-	var ch Channel
-
-	fmt.Println(ch.Messages)
-	empty := len(ch.Messages)
-
 	newMessage := msg.Message{
 		"jazzyjazz0713",
 		"I am sick and tired of being sick and tired.",
@@ -22,9 +17,9 @@ func TestAddMessage(t *testing.T) {
 	AddMessage(newMessage)
 
 	fmt.Println()
-	hopeful := len(ch.Messages)
+	hopeful := len(Channel.Messages)
 
-	fmt.Println("This is channel after adding message:", ch.Messages)
+	fmt.Println("This is channel after adding message:", Channel.Messages)
 
 	fmt.Println(empty)
 	if empty == hopeful {
