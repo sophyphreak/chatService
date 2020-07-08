@@ -5,7 +5,7 @@ import "../msg"
 func AddMessage(user1, user2 string, newMsg msg.Message) {
 
 	//sorts the two users by username
-	if user1 < user2 {
+	if user2 < user1 {
 		user1, user2 = user2, user1
 	}
 
