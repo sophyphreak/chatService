@@ -12,10 +12,6 @@ type Conversation struct {
 	Messages []msg.Message `json:"messages"`
 }
 
-// AddMessage function
-//	- checks if Conversation already exists, if not, creates it w/ User1, User2, empty messages slice
-//	- add sent message to Messages slice
-
 // GetMessageList function
 // 	- checks if Conversation exists with User1 and User2
 //	- returns all messages if does exist
