@@ -5,7 +5,8 @@ import (
 )
 
 func TestAddChannel(t *testing.T) {
-	Channels = make([]*Channel, 0)
+	defer clearChannels()
+	clearChannels()
 	name := "bob channel"
 	AddChannel(name)
 	ch := Channels[0]
