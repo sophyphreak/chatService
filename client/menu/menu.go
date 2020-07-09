@@ -8,6 +8,7 @@ import (
 	"os"
 	"strings"
 
+	"../dm"
 	"../joinch"
 )
 
@@ -38,7 +39,7 @@ func Menu(username string) {
 		case "2":
 			joinch.Begin(username)
 		case "3":
-			// dm.Something(username)
+			dm.RunDM(username)
 		case "4":
 			fmt.Println("Thank you", username, "for chatting with us!")
 			os.Exit(1)
