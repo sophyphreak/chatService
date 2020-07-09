@@ -1,22 +1,29 @@
 package ch
 
+import (
+	"testing"
+
+	"../msg"
+)
+
 // Tests to see if adds Message correctly
-// func TestAddMessage(t *testing.T) {
+func TestAddMessage(t *testing.T) {
 
-// 	newMessage := msg.Message{
-// 		"jazzyjazz0713",
-// 		"I am sick and tired of being sick and tired.",
-// 	}
-// 	AddMessage(newMessage)
+	beforeAddMessage := len(Channels)
 
-// 	fmt.Println()
-// 	hopeful := len(Channel.Messages)
+	channelName := "The Bois"
 
-// 	fmt.Println("This is channel after adding message:", Channel.Messages)
+	newMessage := msg.Message{
+		"jazzyjazz0713",
+		"I am sick and tired of being sick and tired.",
+	}
+	AddMessage(newMessage, channelName)
 
-// 	fmt.Println(empty)
-// 	if empty == hopeful {
-// 		t.Errorf("Chanel Message should have updated")
-// 	}
+	afterAddMessage := len(Channels)
 
-// }
+	if beforeAddMessage == afterAddMessage {
+		t.Errorf("Chanel Message should have updated")
+	}
+
+	clearChannels()
+}
