@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"net/http"
 
+	"../ch"
 	"github.com/gorilla/mux"
 )
 
@@ -11,7 +12,6 @@ func getChannelMessages(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	vars := mux.Vars(r)
 	channelName := vars["channelName"]
-	// get channel messages
-	res := channelName + " slice of messages"
-	json.NewEncoder(w).Encode(res)
+	messages := ch.GetMessages(channelName)
+	json.NewEncoder(w).Encode(messages)
 }
