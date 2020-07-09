@@ -1,5 +1,7 @@
 package main
 
+import "../client/name"
+
 func main() {
-	// get username
+	name.GetUsername()
 }
