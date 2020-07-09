@@ -8,6 +8,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"sync"
 )
 
 // display list of channels
@@ -26,8 +27,12 @@ func Begin() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	reqBody, err := ioutil.ReadAll(res.Body)
-	json.Unmarshal(reqBody, &channels)
+	resBody, err := ioutil.ReadAll(res.Body)
+	if err != nil {
+		log.Fatal(err)
+	}
+	json.Unmarshal(resBody, &channels)
+Choose:
 	fmt.Println("List of channels:")
 	for _, c := range channels {
 		fmt.Println(c)
@@ -36,6 +41,13 @@ func Begin() {
 	scanner := bufio.NewScanner(os.Stdin)
 	scanner.Scan()
 	channelName := scanner.Text()
-	fmt.Println(channelName)
-
+	if !stringInSlice(channelName, channels) {
+		fmt.Println("That is not an available channel.")
+		goto Choose
+	}
+	quit := make(chan struct{})
+	go listen(channelName, quit)
+	var wg sync.WaitGroup
+	wg.Add(1)
+	wg.Wait()
 }
