@@ -4,11 +4,15 @@ import (
 	"encoding/json"
 	"io/ioutil"
 	"net/http"
+
+	"../ch"
+	"../msg"
 )
 
 type channelMessage struct {
-	Username string `json:"username"`
-	Body     string `json:"body"`
+	ChannelName string `json:"channelName"`
+	Username    string `json:"username"`
+	Body        string `json:"body"`
 }
 
 func addChannelMessage(w http.ResponseWriter, r *http.Request) {
@@ -20,6 +24,8 @@ func addChannelMessage(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	json.Unmarshal(reqBody, &m)
-	message := m // will be replaced with success or failure
-	json.NewEncoder(w).Encode(message)
+
+	message := msg.CreateMessage(m.Username, m.Body)
+	curChannel := ch.AddMessage(message, m.ChannelName)
+	json.NewEncoder(w).Encode(curChannel)
 }
