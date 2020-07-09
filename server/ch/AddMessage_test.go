@@ -1,6 +1,7 @@
 package ch
 
 import (
+	"reflect"
 	"testing"
 
 	"../msg"
@@ -9,20 +10,23 @@ import (
 // Tests to see if adds Message correctly
 func TestAddMessage(t *testing.T) {
 
-	beforeAddMessage := len(Channels)
-
 	channelName := "The Bois"
 
 	newMessage := msg.Message{
-		"jazzyjazz0713",
-		"I am sick and tired of being sick and tired.",
+		Username: "jazzyjazz0713",
+		Body:     "I am sick and tired of being sick and tired.",
 	}
-	AddMessage(newMessage, channelName)
+	messageSlice := []msg.Message{newMessage}
 
-	afterAddMessage := len(Channels)
+	got := AddMessage(newMessage, channelName)
 
-	if beforeAddMessage == afterAddMessage {
-		t.Errorf("Chanel Message should have updated")
+	expected := Channel{channelName, messageSlice}
+
+	if got.Name != expected.Name {
+		t.Errorf("Got %v Expected %v", got.Name, expected.Name)
+	}
+	if !reflect.DeepEqual(got.Messages, expected.Messages) {
+		t.Errorf("Got %v Expected %v", got.Messages, expected.Messages)
 	}
 
 	clearChannels()
