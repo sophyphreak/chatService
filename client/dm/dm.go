@@ -11,7 +11,7 @@ import (
 )
 
 const (
-	baseUrl = "http://localhost:10000/"
+	baseUrl = "http://localhost:10000"
 )
 
 //retrieve list of usernames from server
