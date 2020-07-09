@@ -1,22 +1,33 @@
 package ch
 
+import (
+	"reflect"
+	"testing"
+
+	"../msg"
+)
+
 // Tests to see if adds Message correctly
-// func TestAddMessage(t *testing.T) {
+func TestAddMessage(t *testing.T) {
 
-// 	newMessage := msg.Message{
-// 		"jazzyjazz0713",
-// 		"I am sick and tired of being sick and tired.",
-// 	}
-// 	AddMessage(newMessage)
+	channelName := "The Bois"
 
-// 	fmt.Println()
-// 	hopeful := len(Channel.Messages)
+	newMessage := msg.Message{
+		Username: "jazzyjazz0713",
+		Body:     "I am sick and tired of being sick and tired.",
+	}
+	messageSlice := []msg.Message{newMessage}
 
-// 	fmt.Println("This is channel after adding message:", Channel.Messages)
+	got := AddMessage(newMessage, channelName)
 
-// 	fmt.Println(empty)
-// 	if empty == hopeful {
-// 		t.Errorf("Chanel Message should have updated")
-// 	}
+	expected := Channel{channelName, messageSlice}
 
-// }
+	if got.Name != expected.Name {
+		t.Errorf("Got %v Expected %v", got.Name, expected.Name)
+	}
+	if !reflect.DeepEqual(got.Messages, expected.Messages) {
+		t.Errorf("Got %v Expected %v", got.Messages, expected.Messages)
+	}
+
+	clearChannels()
+}
