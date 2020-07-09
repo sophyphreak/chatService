@@ -10,6 +10,7 @@ func AddMessage(newMessage msg.Message, name string) Channel {
 	for indx, chnl := range Channels {
 		if chnl.Name == name {
 			Channels[indx].Messages = append(Channels[indx].Messages, newMessage)
+			return *(Channels[indx])
 		}
 	}
 
