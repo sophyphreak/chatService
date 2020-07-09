@@ -25,7 +25,7 @@ func addDirectMessage(w http.ResponseWriter, r *http.Request) {
 	}
 	json.Unmarshal(reqBody, &m)
 
-	//add message to golbal var Conversations
+	//add message to global var Conversations
 	newMessage := msg.Message{Username: m.Sender, Body: m.Body}
 	cnv.AddMessage(m.Sender, m.Receiver, newMessage)
 
