@@ -9,8 +9,18 @@ import (
 	"time"
 )
 
+type response struct {
+	Messages []message `json:"messages"`
+}
+
+type message struct {
+	Username string `json:"username"`
+	Body     string `json:"body"`
+}
+
 func listen(channelName string, quit chan struct{}) {
-	var messages []string
+	var messages []message
+Top:
 	select {
 	case <-quit:
 		return
@@ -23,14 +33,15 @@ func listen(channelName string, quit chan struct{}) {
 		if err != nil {
 			log.Fatal(err)
 		}
-		var resMessages []string
-		json.Unmarshal(resBody, &resMessages)
-		if len(resMessages) < len(messages) {
-			for i := len(messages); i < len(resMessages); i++ {
-				fmt.Println(resMessages[i])
-				messages = resMessages
+		var r response
+		json.Unmarshal(resBody, &r)
+		if len(r.Messages) > len(messages) {
+			for i := len(messages); i < len(r.Messages); i++ {
+				fmt.Println(r.Messages[i].Username+":", r.Messages[i].Body)
+				messages = r.Messages
 			}
 		}
 		time.Sleep(time.Duration(250) * time.Millisecond)
+		goto Top
 	}
 }
