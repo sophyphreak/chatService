@@ -10,7 +10,7 @@ func TestAddChannel(t *testing.T) {
 	name := "bob channel"
 	AddChannel(name)
 	ch := Channels[0]
-	if name == ch.Name {
+	if name != ch.Name {
 		t.Errorf("Expected channel name to be %s but instead received %s", name, ch.Name)
 	}
 	if len(ch.Messages) != 0 {
