@@ -13,4 +13,10 @@ func AddMessage(newMessage msg.Message, name string) {
 		}
 	}
 
+	messages := make([]msg.Message, 0)
+	messages = append(messages, newMessage)
+
+	newChnl := Channel{name, messages}
+	Channels = append(Channels, &newChnl)
+
 }

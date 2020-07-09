@@ -1,7 +1,6 @@
 package ch
 
 import (
-	"fmt"
 	"testing"
 
 	"../msg"
@@ -10,20 +9,21 @@ import (
 // Tests to see if adds Message correctly
 func TestAddMessage(t *testing.T) {
 
+	beforeAddMessage := len(Channels)
+
+	channelName := "The Bois"
+
 	newMessage := msg.Message{
 		"jazzyjazz0713",
 		"I am sick and tired of being sick and tired.",
 	}
-	AddMessage(newMessage)
+	AddMessage(newMessage, channelName)
 
-	fmt.Println()
-	hopeful := len(Channel.Messages)
+	afterAddMessage := len(Channels)
 
-	fmt.Println("This is channel after adding message:", Channel.Messages)
-
-	fmt.Println(empty)
-	if empty == hopeful {
+	if beforeAddMessage == afterAddMessage {
 		t.Errorf("Chanel Message should have updated")
 	}
 
+	clearChannels()
 }
