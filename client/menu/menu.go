@@ -18,6 +18,8 @@ func Menu(username string) {
 	in := bufio.NewReader(os.Stdin)
 
 	for {
+
+		fmt.Println()
 		fmt.Println("\t\tWelcome to our Chat Service", username+"!\n")
 		fmt.Println("Select one of the choices below!")
 		fmt.Println("1. Create a new channel")

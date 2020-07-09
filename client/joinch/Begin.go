@@ -22,7 +22,7 @@ import (
 // allows user to quit to main menu by typing "quit" or something
 
 // Begin is the entry point to join channel functionality
-func Begin() {
+func Begin(username string) {
 	var channels []string
 	res, err := http.Get("http://localhost:10000/channel")
 	if err != nil {
@@ -49,13 +49,15 @@ Choose:
 	quit := make(chan struct{})
 	go listen(channelName, quit)
 InputMessage:
+	fmt.Println("If you would like to leave this channel type \"quit\"")
+	fmt.Print("What message would you like to send? ")
 	scanner.Scan()
 	message := strings.TrimSpace(scanner.Text())
 	if message == "quit" {
 		quit <- struct{}{}
 		return
 	}
-	username := "sophyphreak" // this needs to be changed
+
 	values := make(map[string]string)
 	values["channelName"] = channelName
 	values["username"] = username
