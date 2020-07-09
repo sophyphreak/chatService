@@ -44,13 +44,6 @@ func getInput(prompt string) string {
 	return userName
 }
 
-// func getDmChoice(users *[]string) {
-
-// 	scanner
-// }
-
-// user inputs who they want to talk to
-// display all dms between user and other user
 func GetConvo(sender, receiver string) dataForms.Conversation {
 	page := fmt.Sprintf("/message/direct/%v/%v", sender, receiver)
 	resp, err := http.Get(BaseUrl + page)
