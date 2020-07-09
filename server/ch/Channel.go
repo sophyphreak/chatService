@@ -17,6 +17,7 @@ type Channel struct {
 //		- if not return error
 //	- add to the Channels slice
 
+// Jasmine --
 // AddMessage function
 //	- add sent message to Messages slice
 
