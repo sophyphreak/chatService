@@ -18,7 +18,8 @@ type Username struct {
 }
 
 //GetUsername gets username from the client
-func GetUsername() {
+func GetUsername() string {
+
 Start:
 	fmt.Println("Thank you for using our service!")
 	fmt.Print("Please create your username: ")
@@ -41,10 +42,14 @@ Start:
 	respBody, _ := ioutil.ReadAll(resp.Body)
 	json.Unmarshal(respBody, &secondUsername)
 
-	if secondUsername.Username != name {
+	currentUsername := secondUsername.Username
+
+	if currentUsername != name {
 		fmt.Println("The username", name, "has been taken. Your new username is", secondUsername.Username)
 	} else {
 		fmt.Println("Your username has successfully been created")
 	}
+
+	return currentUsername
 
 }
