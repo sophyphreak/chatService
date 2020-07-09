@@ -20,8 +20,8 @@ type Username struct {
 //GetUsername gets username from the client
 func GetUsername() string {
 
-Start:
 	fmt.Println("Thank you for using our service!")
+Start:
 	fmt.Print("Please create your username: ")
 
 	in := bufio.NewReader(os.Stdin)
@@ -45,7 +45,16 @@ Start:
 	currentUsername := secondUsername.Username
 
 	if currentUsername != name {
-		fmt.Println("The username", name, "has been taken. Your new username is", secondUsername.Username)
+		fmt.Println("The username", name, "has been taken. Your suggested username is", currentUsername)
+		fmt.Print("Would you like to use the suggested username? ")
+		response, _ := in.ReadString('\n')
+		response = strings.ToLower(response)
+		response = strings.TrimSpace(response)
+		if response == "no" {
+			goto Start
+		} else {
+			fmt.Println("Your username has successfully been created")
+		}
 	} else {
 		fmt.Println("Your username has successfully been created")
 	}
