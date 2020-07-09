@@ -2,13 +2,14 @@ package joinch
 
 import (
 	"bufio"
+	"bytes"
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
 	"log"
 	"net/http"
 	"os"
-	"sync"
+	"strings"
 )
 
 // display list of channels
@@ -47,7 +48,25 @@ Choose:
 	}
 	quit := make(chan struct{})
 	go listen(channelName, quit)
-	var wg sync.WaitGroup
-	wg.Add(1)
-	wg.Wait()
+InputMessage:
+	scanner.Scan()
+	message := strings.TrimSpace(scanner.Text())
+	if message == "quit" {
+		quit <- struct{}{}
+		return
+	}
+	username := "sophyphreak" // this needs to be changed
+	values := make(map[string]string)
+	values["channelName"] = channelName
+	values["username"] = username
+	values["body"] = message
+	jsonValue, err := json.Marshal(values)
+	if err != nil {
+		log.Fatal(err)
+	}
+	_, err = http.Post("http://localhost:10000/message/channel", "application/json", bytes.NewBuffer(jsonValue))
+	if err != nil {
+		log.Fatal(err)
+	}
+	goto InputMessage
 }
