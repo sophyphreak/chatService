@@ -50,7 +50,7 @@ Choose:
 	go listen(channelName, quit)
 InputMessage:
 	fmt.Println("If you would like to leave this channel type \"quit\"")
-	fmt.Print("What message would you like to send? ")
+	fmt.Println()
 	scanner.Scan()
 	message := strings.TrimSpace(scanner.Text())
 	if message == "quit" {
