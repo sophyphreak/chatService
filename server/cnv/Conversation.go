@@ -11,7 +11,3 @@ type Conversation struct {
 	User2    string        `json:"user2"`
 	Messages []msg.Message `json:"messages"`
 }
-
-// GetMessageList function
-// 	- checks if Conversation exists with User1 and User2
-//	- returns all messages if exists
