@@ -6,10 +6,6 @@ import (
 	"../utils"
 )
 
-const (
-	BaseUrl = "http://localhost:10000"
-)
-
 //prints error when user enter invalid message
 func printMessageError() {
 	fmt.Println()

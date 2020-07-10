@@ -12,7 +12,7 @@ import (
 
 func getConvo(sender, receiver string) dataForms.Conversation {
 	page := fmt.Sprintf("/message/direct/%v/%v", sender, receiver)
-	resp, err := http.Get(BaseUrl + page)
+	resp, err := http.Get(utils.URL + page)
 	utils.Check(err)
 	defer resp.Body.Close()
 
