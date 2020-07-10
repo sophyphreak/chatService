@@ -8,20 +8,16 @@ import (
 	"net/http"
 	"time"
 
+	"../msg"
 	"../utils"
 )
 
 type response struct {
-	Messages []message `json:"messages"`
-}
-
-type message struct {
-	Username string `json:"username"`
-	Body     string `json:"body"`
+	Messages []msg.Message `json:"messages"`
 }
 
 func listen(channelName string, quit chan struct{}) {
-	var messages []message
+	var messages []msg.Message
 Top:
 	select {
 	case <-quit:
