@@ -7,6 +7,8 @@ import (
 	"log"
 	"net/http"
 	"time"
+
+	"../utils"
 )
 
 type response struct {
@@ -25,7 +27,7 @@ Top:
 	case <-quit:
 		return
 	default:
-		res, err := http.Get("http://localhost:10000/message/channel/" + channelName)
+		res, err := http.Get(utils.URL + "/message/channel/" + channelName)
 		if err != nil {
 			log.Fatal(err)
 		}
