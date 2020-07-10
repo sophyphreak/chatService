@@ -19,7 +19,7 @@ Listen:
 	case <-quit:
 		return
 	default:
-		resp, err := http.Get(BaseUrl + page)
+		resp, err := http.Get(utils.URL + page)
 		utils.Check(err)
 		defer resp.Body.Close()
 

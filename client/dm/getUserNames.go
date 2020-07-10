@@ -11,7 +11,7 @@ import (
 //retrieve list of usernames from server
 func getUserNames() []string {
 	//get the response from server
-	resp, err := http.Get(BaseUrl + "/username")
+	resp, err := http.Get(utils.URL + "/username")
 	utils.Check(err)
 	defer resp.Body.Close()
 
