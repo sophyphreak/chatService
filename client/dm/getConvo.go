@@ -6,17 +6,16 @@ import (
 	"io/ioutil"
 	"net/http"
 
-	"../dataForms"
 	"../utils"
 )
 
-func getConvo(sender, receiver string) dataForms.Conversation {
+func getConvo(sender, receiver string) conversation {
 	page := fmt.Sprintf("/message/direct/%v/%v", sender, receiver)
 	resp, err := http.Get(utils.URL + page)
 	utils.Check(err)
 	defer resp.Body.Close()
 
-	var convo dataForms.Conversation
+	var convo conversation
 	respBody, err := ioutil.ReadAll(resp.Body)
 	utils.Check(err)
 
