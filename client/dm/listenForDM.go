@@ -7,7 +7,6 @@ import (
 	"net/http"
 	"time"
 
-	"../dataForms"
 	"../utils"
 )
 
@@ -23,7 +22,7 @@ Listen:
 		utils.Check(err)
 		defer resp.Body.Close()
 
-		var convo dataForms.Conversation
+		var convo conversation
 		respBody, err := ioutil.ReadAll(resp.Body)
 		utils.Check(err)
 

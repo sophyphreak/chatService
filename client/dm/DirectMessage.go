@@ -1,6 +1,6 @@
-package dataForms
+package dm
 
-type DirectMessage struct {
+type directMessage struct {
 	Sender   string `json:"sender"`
 	Receiver string `json:"receiver"`
 	Body     string `json:"body"`

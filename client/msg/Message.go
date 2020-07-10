@@ -1,4 +1,4 @@
-package dataForms
+package msg
 
 type Message struct {
 	Username string `json:"username"`

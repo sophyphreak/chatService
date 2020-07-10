@@ -5,13 +5,12 @@ import (
 	"encoding/json"
 	"net/http"
 
-	"../dataForms"
 	"../utils"
 )
 
 func sendMessage(sender, receiver, body string) {
 
-	dm := dataForms.DirectMessage{Sender: sender, Receiver: receiver, Body: body}
+	dm := directMessage{Sender: sender, Receiver: receiver, Body: body}
 	fullURL := utils.URL + "/message/direct"
 	jsonValue, err := json.Marshal(dm)
 	utils.Check(err)
