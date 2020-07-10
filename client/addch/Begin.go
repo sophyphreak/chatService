@@ -7,12 +7,9 @@ import (
 	"fmt"
 	"net/http"
 	"os"
-)
 
-// asks user for name
-// sends POST to /channel
-// tells user if it was created successfully or if already existed
-// send user to main menu
+	"../utils"
+)
 
 // Begin is the entrypoint for the add channel functionality
 func Begin() {
@@ -23,7 +20,7 @@ func Begin() {
 
 	values := map[string]string{"name": channelName}
 	jsonValue, _ := json.Marshal(values)
-	_, err := http.Post("http://localhost:10000/channel", "application/json", bytes.NewBuffer(jsonValue))
+	_, err := http.Post(utils.URL+"/channel", "application/json", bytes.NewBuffer(jsonValue))
 	if err != nil {
 		fmt.Println(err)
 		fmt.Println("Was not able to reach server")
