@@ -14,7 +14,7 @@ func printMessageError() {
 }
 
 func RunDM(sender string) {
-	availableUsers := getUserNames()
+	availableUsers := GetUserNames()
 	utils.PrintStringSlice(availableUsers)
 ChooseReceiver:
 	receiver := utils.GetInput("Send message to: ")

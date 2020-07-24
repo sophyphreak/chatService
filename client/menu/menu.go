@@ -1,12 +1,12 @@
 package menu
 
 import (
-	"../addch"
-	//"../dm"
 	"bufio"
 	"fmt"
 	"os"
 	"strings"
+
+	"../addch"
 
 	"../dm"
 	"../joinch"
